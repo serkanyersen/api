@@ -14,7 +14,7 @@ server.use(restify.jsonp());
 server.use(restify.CORS());
 server.use(restify.bodyParser());
 
-server.post('/parse', function (req, res, next) {
+server.post('/sass', function (req, res, next) {
 
     var result = sass.renderSync({
       data: req.params.code
