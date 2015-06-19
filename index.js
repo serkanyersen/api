@@ -3,14 +3,16 @@
 
 var restify = require('restify');
 var Logger = require('bunyan');
-var sass = require('node-sass');
+var sass = require(__dirname + '/endpoints/sass.js');
 var versioning = require('restify-url-semver');
+
 var log = new Logger.createLogger({
     name: 'api',
     serializers: {
         req: Logger.stdSerializers.req
     }
 });
+
 var server = restify.createServer({
   name: 'api',
   log: log,
@@ -33,17 +35,8 @@ server.use(restify.jsonp());
 server.use(restify.CORS());
 server.use(restify.bodyParser());
 
-server.post({ path: '/sass', version: '1.0.0' }, function (req, res, next) {
-    var result = sass.renderSync({
-      data: req.params.code
-    });
-
-    res.send({
-      result: result.css.toString()
-    });
-
-    return next();
-});
+// Endpoints
+server.post({ path: '/sass', version: '1.0.0' }, sass.v1);
 
 server.listen(9090, function () {
     console.log('%s listening at %s', server.name, server.url);
