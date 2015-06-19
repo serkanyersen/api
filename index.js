@@ -1,9 +1,10 @@
+#!/usr/bin/env node
 var restify = require('restify');
 var sass = require('node-sass');
-var args = process.argv.slice(2);
+// var args = process.argv.slice(2);
 
 var server = restify.createServer({
-  name: 'sass-api',
+  name: 'api',
   version: '1.0.0'
 });
 
@@ -26,6 +27,6 @@ server.post('/parse', function (req, res, next) {
     return next();
 });
 
-server.listen(args[0] || 8081, function () {
+server.listen(9090, function () {
     console.log('%s listening at %s', server.name, server.url);
 });
