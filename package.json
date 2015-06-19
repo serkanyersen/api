@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "basic api features to do things on the fly",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -q index.js --watch index.js"
+  },
+  "author": "Serkan Yersen <serkanyersen@gmail.com> (http://serkan.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^3.2.0",
+    "restify": "^3.0.3"
+  }
+}
