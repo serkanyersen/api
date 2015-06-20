@@ -4,6 +4,7 @@
 var restify = require('restify');
 var SassCompiler = require(__dirname + '/compilers/sass-compiler.js');
 var CoffeeCompiler = require(__dirname + '/compilers/coffee-compiler.js');
+var EchoCompiler = require(__dirname + '/compilers/echo-compiler.js');
 var versioning = require('restify-url-semver');
 
 var server = restify.createServer({
@@ -27,6 +28,9 @@ server.get({ path: '/sass', version: '1.0.0' }, new SassCompiler().asView());
 
 server.post({ path: '/coffee', version: '1.0.0' }, new CoffeeCompiler().asView());
 server.get({ path: '/coffee', version: '1.0.0' }, new CoffeeCompiler().asView());
+
+server.post({ path: '/echo', version: '1.0.0' }, new EchoCompiler().asView());
+server.get({ path: '/echo', version: '1.0.0' }, new EchoCompiler().asView());
 
 server.listen(9090, function () {
     console.log('%s listening at %s', server.name, server.url);

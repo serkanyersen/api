@@ -70,11 +70,11 @@ CompilerBase.prototype.view = function(req, res, next) {
 
     this.params = req.params;
 
-    if (req.method === 'POST') {
-        source = req.params.code;
-    } else {
+    if (req.params.file) {
         source = this.getFile(req.params.file);
         plainText = true;
+    } else {
+        source = req.params.code;
     }
 
     result = this.compile(source);
