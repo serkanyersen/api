@@ -14,9 +14,9 @@ var log = new Logger.createLogger({
 });
 
 var server = restify.createServer({
-  name: 'api',
-  log: log,
-  version: ['1.0.0']
+    name: 'api',
+    log: log,
+    version: ['1.0.0']
 });
 
 // Allow versioning
@@ -36,7 +36,8 @@ server.use(restify.CORS());
 server.use(restify.bodyParser());
 
 // Endpoints
-server.post({ path: '/sass', version: '1.0.0' }, sass.v1);
+server.post({ path: '/sass', version: '1.0.0' }, sass.POST.v1);
+server.get({ path: '/sass', version: '1.0.0' }, sass.GET.v1);
 
 server.listen(9090, function () {
     console.log('%s listening at %s', server.name, server.url);

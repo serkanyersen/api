@@ -12,6 +12,7 @@
   "dependencies": {
     "bunyan": "^1.4.0",
     "node-sass": "^3.2.0",
+    "request": "^2.58.0",
     "restify": "^3.0.3",
     "restify-url-semver": "^1.0.0"
   }
