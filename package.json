@@ -4,7 +4,7 @@
   "description": "basic api features to do things on the fly",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -q index.js --watch index.js --watch endpoints/*.js"
+    "start": "nodemon -q index.js --watch index.js --watch compilers/*.js"
   },
   "author": "Serkan Yersen <serkanyersen@gmail.com> (http://serkan.io/)",
   "license": "MIT",
@@ -13,8 +13,8 @@
     "bunyan": "^1.4.0",
     "coffee-script": "^1.9.3",
     "node-sass": "^3.2.0",
-    "request": "^2.58.0",
     "restify": "^3.0.3",
-    "restify-url-semver": "^1.0.0"
+    "restify-url-semver": "^1.0.0",
+    "sync-request": "^2.0.1"
   }
 }
