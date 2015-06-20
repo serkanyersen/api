@@ -1,6 +1,6 @@
 'use strict';
 
-Function.prototype.inheritsFrom = function( ParentClassOrObject ){
+Function.prototype.inherits = function( ParentClassOrObject ){
     if ( ParentClassOrObject.constructor === Function ) {
         //Normal Inheritance
         this.prototype = new ParentClassOrObject();

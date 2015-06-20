@@ -3,9 +3,10 @@ var sass = require('node-sass');
 var CompilerBase = require('./compiler-base.js');
 require('../utils.js');
 
-function SassCompiler() {}
-SassCompiler.inheritsFrom(CompilerBase);
+// Create Class
+var SassCompiler = function(){ }.inherits(CompilerBase);
 
+// Implement compile method
 SassCompiler.prototype.compile = function(code) {
     var result = sass.renderSync({
         data: code,
