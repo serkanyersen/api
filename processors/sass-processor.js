@@ -6,8 +6,8 @@ require('../src/utils.js');
 // Create Class
 var SASSProcessor = function(){ }.inherits(BaseProcessor);
 
-// Implement compile method
-SASSProcessor.prototype.compile = function(code) {
+// Implement process method
+SASSProcessor.prototype.process = function(code) {
     var result = sass.renderSync({
         data: code,
         indentedSyntax: this.getConfig('sass', false),

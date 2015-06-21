@@ -10,10 +10,10 @@ function BaseProcessor() {
 }
 
 /**
- * Compiles the given code.
+ * Processes the given input.
  * Classes inheriting this Class should implement this method
  */
-BaseProcessor.prototype.compile = function() {
+BaseProcessor.prototype.process = function() {
     throw 'not implemented';
 };
 
@@ -79,7 +79,7 @@ BaseProcessor.prototype.view = function(req, res, next) {
         source = req.params.code;
     }
 
-    result = this.compile(source);
+    result = this.process(source);
     this.sendResponse(res, result, plainText);
     return next();
 };

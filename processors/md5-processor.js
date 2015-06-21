@@ -8,8 +8,8 @@ var MD5Processor = function(){
     this.usePlainText = false;
 }.inherits(BaseProcessor);
 
-// Implement compile method
-MD5Processor.prototype.compile = function(code) {
+// Implement process method
+MD5Processor.prototype.process = function(code) {
     return md5(code);
 };
 

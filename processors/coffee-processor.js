@@ -6,8 +6,8 @@ require('../src/utils.js');
 // Create Class
 var CoffeeProcessor = function(){ }.inherits(BaseProcessor);
 
-// Implement compile method
-CoffeeProcessor.prototype.compile = function(code) {
+// Implement process method
+CoffeeProcessor.prototype.process = function(code) {
     return coffee.compile(code, this.getConfig());
 };
 

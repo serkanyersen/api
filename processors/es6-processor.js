@@ -6,8 +6,8 @@ require('../src/utils.js');
 // Create Class
 var ES6Processor = function(){ }.inherits(BaseProcessor);
 
-// Implement compile method
-ES6Processor.prototype.compile = function(code) {
+// Implement process method
+ES6Processor.prototype.process = function(code) {
 
     var result = babel.transform(code, {
         auxiliaryComment:   this.getConfig('auxiliaryComment', null),
