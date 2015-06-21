@@ -3,6 +3,7 @@ var CoffeeProcessor = require('../processors/coffee-processor.js');
 var EchoProcessor = require('../processors/echo-processor.js');
 var ES6Processor = require('../processors/es6-processor.js');
 var MD5Processor = require('../processors/md5-processor.js');
+var HAMLProcessor = require('../processors/haml-processor.js');
 
 module.exports = function routes(server) {
     'use strict';
@@ -22,6 +23,9 @@ module.exports = function routes(server) {
 
     server.post({ path: '/md5', version: '1.0.0' }, new MD5Processor().asView());
     server.get({ path: '/md5', version: '1.0.0' }, new MD5Processor().asView());
+
+    server.post({ path: '/haml', version: '1.0.0' }, new HAMLProcessor().asView());
+    server.get({ path: '/haml', version: '1.0.0' }, new HAMLProcessor().asView());
 
     return server;
 };

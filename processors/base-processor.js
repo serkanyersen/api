@@ -7,6 +7,7 @@ var request = require('sync-request');
  */
 function BaseProcessor() {
     this.usePlainText = true;
+    this.contentType = 'text/plain';
 }
 
 /**
@@ -50,7 +51,7 @@ BaseProcessor.prototype.getConfig = function(key, defaultValue) {
 BaseProcessor.prototype.sendResponse = function(res, content, plain) {
     if (plain) {
         res.header('Content-Length', Buffer.byteLength(content));
-        res.header('Content-Type', 'text/plain');
+        res.header('Content-Type', this.contentType);
 
         res.end(content);
     } else {
