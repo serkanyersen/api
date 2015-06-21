@@ -34,7 +34,7 @@ CompilerBase.prototype.getFile = function(filePath) {
 CompilerBase.prototype.getConfig = function(key, defaultValue) {
     var config = this.params;
     if (key) {
-        return config[key] || defaultValue;
+        return config.hasOwnProperty(key) ? config[key] : defaultValue;
     }
     return config;
 };
