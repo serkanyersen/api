@@ -1,8 +1,8 @@
-var SASSProcessor = require('../compilers/sass-compiler.js');
-var CoffeeProcessor = require('../compilers/coffee-compiler.js');
-var EchoProcessor = require('../compilers/echo-compiler.js');
-var ES6Processor = require('../compilers/es6-compiler.js');
-var MD5Processor = require('../compilers/md5-compiler.js');
+var SASSProcessor = require('../processors/sass-processor.js');
+var CoffeeProcessor = require('../processors/coffee-processor.js');
+var EchoProcessor = require('../processors/echo-processor.js');
+var ES6Processor = require('../processors/es6-processor.js');
+var MD5Processor = require('../processors/md5-processor.js');
 
 module.exports = function routes(server) {
     'use strict';
