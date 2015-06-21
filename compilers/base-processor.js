@@ -5,13 +5,15 @@ var request = require('sync-request');
  * Constructor
  * @constructor
  */
-function CompilerBase() {}
+function BaseProcessor() {
+    this.usePlainText = true;
+}
 
 /**
  * Compiles the given code.
  * Classes inheriting this Class should implement this method
  */
-CompilerBase.prototype.compile = function() {
+BaseProcessor.prototype.compile = function() {
     throw 'not implemented';
 };
 
@@ -20,7 +22,7 @@ CompilerBase.prototype.compile = function() {
  * @param  {String} filePath Full path of the file
  * @return {string}          File contents as string
  */
-CompilerBase.prototype.getFile = function(filePath) {
+BaseProcessor.prototype.getFile = function(filePath) {
     var response = request('GET', filePath);
     return response.getBody().toString();
 };
@@ -31,7 +33,7 @@ CompilerBase.prototype.getFile = function(filePath) {
  * @param  {any} defaultValue if key is not found return the default value
  * @return {any}              matched config or whole config object
  */
-CompilerBase.prototype.getConfig = function(key, defaultValue) {
+BaseProcessor.prototype.getConfig = function(key, defaultValue) {
     var config = this.params;
     if (key) {
         return config.hasOwnProperty(key) ? config[key] : defaultValue;
@@ -45,7 +47,7 @@ CompilerBase.prototype.getConfig = function(key, defaultValue) {
  * @param  {string} content content to display on the screen
  * @param  {bool} plain   if true display the content as plain text, otherwise display as json
  */
-CompilerBase.prototype.sendResponse = function(res, content, plain) {
+BaseProcessor.prototype.sendResponse = function(res, content, plain) {
     if (plain) {
         res.header('Content-Length', Buffer.byteLength(content));
         res.header('Content-Type', 'text/plain');
@@ -65,14 +67,14 @@ CompilerBase.prototype.sendResponse = function(res, content, plain) {
  * @param  {object}   res  Response Object
  * @param  {Function} next function to complete this views operation
  */
-CompilerBase.prototype.view = function(req, res, next) {
+BaseProcessor.prototype.view = function(req, res, next) {
     var plainText = false, source, result;
 
     this.params = req.params;
 
     if (req.params.file) {
         source = this.getFile(req.params.file);
-        plainText = true;
+        plainText = this.usePlainText;
     } else {
         source = req.params.code;
     }
@@ -86,8 +88,8 @@ CompilerBase.prototype.view = function(req, res, next) {
  * Bind the view function with itself and returns it.
  * @return {Function} this.view
  */
-CompilerBase.prototype.asView = function() {
+BaseProcessor.prototype.asView = function() {
     return this.view.bind(this);
 };
 
-module.exports = CompilerBase;
+module.exports = BaseProcessor;

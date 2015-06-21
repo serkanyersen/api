@@ -1,13 +1,13 @@
 'use strict';
 var sass = require('node-sass');
-var CompilerBase = require('./compiler-base.js');
+var BaseProcessor = require('./base-processor.js');
 require('../src/utils.js');
 
 // Create Class
-var SassCompiler = function(){ }.inherits(CompilerBase);
+var SASSProcessor = function(){ }.inherits(BaseProcessor);
 
 // Implement compile method
-SassCompiler.prototype.compile = function(code) {
+SASSProcessor.prototype.compile = function(code) {
     var result = sass.renderSync({
         data: code,
         indentedSyntax: this.getConfig('sass', false),
@@ -18,4 +18,4 @@ SassCompiler.prototype.compile = function(code) {
     return result.css.toString();
 };
 
-module.exports = SassCompiler;
+module.exports = SASSProcessor;

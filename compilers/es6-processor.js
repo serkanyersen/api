@@ -1,13 +1,13 @@
 'use strict';
 var babel = require('babel-core');
-var CompilerBase = require('./compiler-base.js');
+var BaseProcessor = require('./base-processor.js');
 require('../src/utils.js');
 
 // Create Class
-var ES6Compiler = function(){ }.inherits(CompilerBase);
+var ES6Processor = function(){ }.inherits(BaseProcessor);
 
 // Implement compile method
-ES6Compiler.prototype.compile = function(code) {
+ES6Processor.prototype.compile = function(code) {
 
     var result = babel.transform(code, {
         auxiliaryComment:   this.getConfig('auxiliaryComment', null),
@@ -22,4 +22,4 @@ ES6Compiler.prototype.compile = function(code) {
     return result.code;
 };
 
-module.exports = ES6Compiler;
+module.exports = ES6Processor;
