@@ -36,6 +36,7 @@ BaseProcessor.prototype.getFile = function(filePath) {
  */
 BaseProcessor.prototype.getConfig = function(key, defaultValue) {
     var config = this.params;
+
     if (key) {
         return config.hasOwnProperty(key) ? config[key] : defaultValue;
     }
@@ -71,7 +72,20 @@ BaseProcessor.prototype.sendResponse = function(res, content, plain) {
 BaseProcessor.prototype.view = function(req, res, next) {
     var plainText = false, source, result;
 
-    this.params = req.params;
+    this.params = {};
+
+    // evaluate some params
+    Object.keys(req.params).forEach(function(key) {
+        var value = req.params[key];
+
+        if (value === 'true') {
+            value = true;
+        } else if (value === 'false') {
+            value = false;
+        }
+
+        this.params[key] = value;
+    }.bind(this));
 
     if (req.params.file) {
         source = this.getFile(req.params.file);

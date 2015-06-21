@@ -14,4 +14,6 @@ url | method | description
 /v1/md5 | GET | send a file url in `file` property and receive md5
 /v1/haml | POST | give haml string in `code` and will give you back html code. you can also send `&context=[json]` to provide context for your template
 /v1/haml | GET | send a haml file url in `file` property and receive html
+/v1/jade | POST | give jade string in `code` and will give you back html code. you can also send `&context=[json]` to provide context for your template
+/v1/jade | GET | send a jade file url in `file` property and receive html
 /v1/echo | G,P | give any string in `code` and will give you back the string, you can send `&delay=1000` to mimic slow connection or send `&error=any message` to mimic error message

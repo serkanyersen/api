@@ -4,6 +4,7 @@ var EchoProcessor = require('../processors/echo-processor.js');
 var ES6Processor = require('../processors/es6-processor.js');
 var MD5Processor = require('../processors/md5-processor.js');
 var HAMLProcessor = require('../processors/haml-processor.js');
+var JadeProcessor = require('../processors/jade-processor.js');
 
 module.exports = function routes(server) {
     'use strict';
@@ -26,6 +27,9 @@ module.exports = function routes(server) {
 
     server.post({ path: '/haml', version: '1.0.0' }, new HAMLProcessor().asView());
     server.get({ path: '/haml', version: '1.0.0' }, new HAMLProcessor().asView());
+
+    server.post({ path: '/jade', version: '1.0.0' }, new JadeProcessor().asView());
+    server.get({ path: '/jade', version: '1.0.0' }, new JadeProcessor().asView());
 
     return server;
 };
