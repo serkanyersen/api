@@ -4,7 +4,7 @@
   "description": "basic api features to do things on the fly",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -q index.js --watch index.js --watch compilers/*.js"
+    "start": "nodemon index.js -w ./**/*.js -i node_modules/"
   },
   "author": "Serkan Yersen <serkanyersen@gmail.com> (http://serkan.io/)",
   "license": "MIT",

@@ -1,6 +1,6 @@
 'use strict';
 var CompilerBase = require('./compiler-base.js');
-require('../utils.js');
+require('../src/utils.js');
 
 // Create Class
 var EchoCompiler = function(){ }.inherits(CompilerBase);

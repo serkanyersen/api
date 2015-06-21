@@ -1,7 +1,7 @@
 'use strict';
 var sass = require('node-sass');
 var CompilerBase = require('./compiler-base.js');
-require('../utils.js');
+require('../src/utils.js');
 
 // Create Class
 var SassCompiler = function(){ }.inherits(CompilerBase);

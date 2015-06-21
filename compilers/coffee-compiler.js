@@ -1,7 +1,7 @@
 'use strict';
 var coffee = require('coffee-script');
 var CompilerBase = require('./compiler-base.js');
-require('../utils.js');
+require('../src/utils.js');
 
 // Create Class
 var CoffeeCompiler = function(){ }.inherits(CompilerBase);

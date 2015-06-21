@@ -1,7 +1,7 @@
 'use strict';
 var babel = require('babel-core');
 var CompilerBase = require('./compiler-base.js');
-require('../utils.js');
+require('../src/utils.js');
 
 // Create Class
 var ES6Compiler = function(){ }.inherits(CompilerBase);
