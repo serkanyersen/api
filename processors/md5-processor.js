@@ -1,6 +1,6 @@
 'use strict';
-var BaseProcessor = require('./base-processor.js');
 var md5 = require('MD5');
+var BaseProcessor = require('./base-processor.js');
 require('../src/utils.js');
 
 // Create Class
