@@ -10,3 +10,6 @@ url | method | description
 /v1/coffee | GET | send a file url in `file` property and receive compiled JS. you can also add `&bare=true` to get unwrapped version of the output
 /v1/es6 | POST | send es6 code in `code` property and receive compiled JS. you can also add `&stage=0` to get experimental version
 /v1/es6 | GET | send a file url in `file` property and receive compiled JS. you can also add `&stage=0` to get experimental version
+/v1/md5 | POST | give any string in `code` and will give you back md5
+/v1/md5 | GET | send a file url in `file` property and receive md5
+/v1/echo | G,P | give any string in `code` and will give you back the string, you can send `&delay=1000` to mimic slow connection or send `&error=any message` to mimic error message
