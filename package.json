@@ -17,6 +17,7 @@
     "deasync": "^0.1.0",
     "haml": "^0.4.3",
     "jade": "^1.11.0",
+    "less": "^2.5.1",
     "node-sass": "^3.2.0",
     "restify": "^3.0.3",
     "restify-url-semver": "^1.0.0",

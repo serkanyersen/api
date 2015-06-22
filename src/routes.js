@@ -5,6 +5,7 @@ var ES6Processor = require('../processors/es6-processor.js');
 var MD5Processor = require('../processors/md5-processor.js');
 var HAMLProcessor = require('../processors/haml-processor.js');
 var JadeProcessor = require('../processors/jade-processor.js');
+var LESSProcessor = require('../processors/less-processor.js');
 
 module.exports = function routes(server) {
     'use strict';
@@ -30,6 +31,9 @@ module.exports = function routes(server) {
 
     server.post({ path: '/jade', version: '1.0.0' }, new JadeProcessor().asView());
     server.get({ path: '/jade', version: '1.0.0' }, new JadeProcessor().asView());
+
+    server.post({ path: '/less', version: '1.0.0' }, new LESSProcessor().asView());
+    server.get({ path: '/less', version: '1.0.0' }, new LESSProcessor().asView());
 
     return server;
 };

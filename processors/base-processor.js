@@ -8,6 +8,7 @@ var request = require('sync-request');
 function BaseProcessor() {
     this.usePlainText = true;
     this.contentType = 'text/plain';
+    this.useCallback = false;
 }
 
 /**
@@ -94,9 +95,16 @@ BaseProcessor.prototype.view = function(req, res, next) {
         source = req.params.code;
     }
 
-    result = this.process(source);
-    this.sendResponse(res, result, plainText);
-    return next();
+    if (this.useCallback) {
+        this.process(source, function(result) {
+            this.sendResponse(res, result, plainText);
+            next();
+        }.bind(this));
+    } else {
+        result = this.process(source);
+        this.sendResponse(res, result, plainText);
+        next();
+    }
 };
 
 /**
